@@ -35,8 +35,8 @@ void function () {
                 input.value = value;
             }
 
-            if ((counter % modifier) === 0) {
-                step = step * 5;
+            if ((counter % 10) === 0) {
+                step = step * modifier;
                 input.setAttribute('step', step);
             }
         }, false);
