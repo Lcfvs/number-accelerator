@@ -8,13 +8,13 @@ https://github.com/Lcfvs/number-accelerator
 void function () {
     var accelerate;
     
-    accelerate = function accelerate(input) {
-        var modifier,
+    accelerate = function accelerate(input, modifier) {
+        var counter,
             previousValue,
             originalStep,
             step;
 
-        modifier = 1;
+        counter = 0;
         previousValue = +input.value;
         originalStep =
             step = +input.getAttribute('step');
@@ -22,7 +22,7 @@ void function () {
         input.addEventListener('input', function (event) {
             var value;
 
-            modifier += 1;
+            counter += 1;
             value = +input.value;
 
             if ((value % step) !== 0) {
@@ -35,14 +35,14 @@ void function () {
                 input.value = value;
             }
 
-            if ((modifier % 10) === 0) {
+            if ((counter % modifier) === 0) {
                 step = step * 5;
                 input.setAttribute('step', step);
             }
         }, false);
 
         input.addEventListener('mouseup', function (event) {
-            modifier = 1;
+            counter = 0;
 
             step = originalStep;
             input.setAttribute('step', step);
