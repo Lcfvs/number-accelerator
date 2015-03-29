@@ -8,7 +8,7 @@ https://github.com/Lcfvs/number-accelerator
 void function () {
     var accelerate;
     
-    accelerate = function accelerate(input, modifier) {
+    accelerate = function accelerate(input, modifier, modulo) {
         var counter,
             previousValue,
             originalStep,
@@ -35,7 +35,7 @@ void function () {
                 input.value = value;
             }
 
-            if ((counter % 10) === 0) {
+            if ((counter % (modulo || 5)) === 0) {
                 step = step * modifier;
                 input.setAttribute('step', step);
             }
